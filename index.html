@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html ng-app="BuildyourBuild">
 <head lang="en">
     <meta charset="UTF-8">
@@ -7,8 +7,6 @@
     <link href='https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300,700' rel='stylesheet' type='text/css'>
     <link href='https://fonts.googleapis.com/css?family=Pacifico' rel='stylesheet' type='text/css'>
     <link rel="stylesheet" href="styles/bootstrap.min.css">
-    <script type="text/javascript" src="scripts/jquery-2.1.4.min.js"></script>
-    <script src="scripts/bootstrap.min.js"></script>
     <link rel="stylesheet" href="styles/style.css"/>
 </head>
 <body ng-controller="MainCtrl">
@@ -37,7 +35,8 @@
             </ul>
         </div>
 </section>
-<fullpage class="instant-size" page-class="page">
+<div class="spinner" ng-hide="pageloaded"></div>
+<fullpage ng-cloak="" ng-show="pageloaded" class="instant-size" page-class="page">
     <section class="page" id="page0">
         <section class="container">
             <h1>About</h1>
@@ -56,7 +55,9 @@
     </section>
     <section class="page" id="page2">
         <section class="container">
+            
             <section>
+                
                 <h1>HOW IT WORKS:</h1>
                 <h2>Get your favourite Lolking Guide and copy + paste the URL here</h2>
                 <h2>It will generate a JSON file that contains your item set. You only have to put it into the game location given</h2>
@@ -64,13 +65,16 @@
                 <a href="#" ng-click="start()">UNDERSTOOD? Let's go</a>
                 <section ng-show="started">
                     <input type=text ng-model="url" placeholder="Paste de Lolking Guide URL here"><br/>
-                    <a href="#" fullpage-href="page3" ng-click="go(url)">GIVE ME MY ITEM SET</a>
+                    <a href="#" fullpage-href="{{validationhref}}" ng-click="validate(url)">GIVE ME MY ITEM SET</a>
                 </section>
             </section>
         </section>
+        <alert ng-show="wrongurl" class="alert" type="danger">{{ alertmsg }}</alert>
     </section>
     <section  class="page" id="page3">
-        <section class="container">
+        <div id="loadingdata" ng-hide="dataloaded"><h3>Loading data...</h3></div>
+        <div class="spinner" ng-hide="dataloaded"></div>
+        <section ng-cloak="" ng-show="dataloaded" class="container">
             <section>
                 <h4>Here you can modify the titles, this is OPTIONAL. Let you know that titles in the game will not show more than 50 characteres. </h4>
                 <section id="button-group">
@@ -91,6 +95,7 @@
                 </ul>
             </section>
         </section>
+        <alert ng-show="wrongurl" class="alert" type="danger">{{ alertmsg }}</alert>
     </section>
     <section class="page" id="page4">
         <section class="container">
@@ -105,7 +110,10 @@
         </section>
     </section>
 </fullpage>
+<script type="text/javascript" src="scripts/jquery-2.1.4.min.js"></script>
+<script src="scripts/bootstrap.min.js"></script>
 <script src="scripts/angular.min.js"></script>
+<script src="scripts/ui-bootstrap.min.js"></script>
 <script src="scripts/br-fullpage.min.js"></script>
 <script src="scripts/app.js"></script>
 <script src="scripts/svc.js"></script>
