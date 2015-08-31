@@ -1,0 +1,113 @@
+﻿<!DOCTYPE html>
+<html ng-app="BuildyourBuild">
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>BuildyourBuild</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300,700' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Pacifico' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" href="styles/bootstrap.min.css">
+    <script type="text/javascript" src="scripts/jquery-2.1.4.min.js"></script>
+    <script src="scripts/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="styles/style.css"/>
+</head>
+<body ng-controller="MainCtrl">
+<section class="nav navbar navbar-default navbar-fixed-top" id="nav-bar">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" fullpage-href="page1" id="brand">BuildyourBuild</a>
+        </div>
+        <div class="navbar-collapse" id="bs-example-navbar-collapse-1">
+            <ul class="nav navbar-nav">
+                <li>
+                    <a fullpage-href="page2">
+                        How to
+                    </a>
+                </li>
+                <li>
+                    <a fullpage-href="page0">
+                        About
+                    </a>
+                </li>
+            </ul>
+        </div>
+</section>
+<fullpage class="instant-size" page-class="page">
+    <section class="page" id="page0">
+        <section class="container">
+            <h1>About</h1>
+            <h3>First, I would like to thank Lolking.net for their approval when I told them the idea I had for this contest. <span class="glyphicon glyphicon-heart"></span><br/>Where the idea comes from?<br/>The idea comes to me becouse I am that kind of person that look for a guide, set up runes and masteries and go in-game thinking - I will minimize the game when I have to buy - but I don't, I never do that, I ALWAYS forget it. So for that people like me or just for that lazy ones, i hope you like this app as much as I will.<br/><br/>How you did it?<br/>The most important things were examine carefully the HTML code of Lolking Guides and understand the Riot's Item Set Documentation. What we do is a HTTP request using the Lolking's URL and it returns a JSON-encoded data which contains the HTML code. Once we get the HTML code, we look for the HTML tags we are interested becouse they have the data we need to format the item set JSON file. Once we get the item set JSON file ready to put in the game location given and working, we focus on give the possibility of customize the item set by the user and get a simple, modern and enjoyable interface.<br/><br/>Which technologies did you use?<br/>Angularjs and bootstrap<br/><br/></h3>
+            <a href="https://github.com/lolDevelopers/BuildyourBuild">Github repository</a>
+        </section>
+    </section>
+    <section class="page" id="page1">
+        <section class="container">
+            <section>
+                <h1>BUILD YOUR BUILD</h1>
+                <h2>Get your items sets from Lolking Guides to League of Legends in seconds</h2>
+                <h1>EASY AND FAST</h1>
+            </section>
+        </section>
+    </section>
+    <section class="page" id="page2">
+        <section class="container">
+            <section>
+                <h1>HOW IT WORKS:</h1>
+                <h2>Get your favourite Lolking Guide and copy + paste the URL here</h2>
+                <h2>It will generate a JSON file that contains your item set. You only have to put it into the game location given</h2>
+                <h2>Check if it works going in-game, becouse it will not appear in the client</h2><br/>
+                <a href="#" ng-click="start()">UNDERSTOOD? Let's go</a>
+                <section ng-show="started">
+                    <input type=text ng-model="url" placeholder="Paste de Lolking Guide URL here"><br/>
+                    <a href="#" fullpage-href="page3" ng-click="go(url)">GIVE ME MY ITEM SET</a>
+                </section>
+            </section>
+        </section>
+    </section>
+    <section  class="page" id="page3">
+        <section class="container">
+            <section>
+                <h4>Here you can modify the titles, this is OPTIONAL. Let you know that titles in the game will not show more than 50 characteres. </h4>
+                <section id="button-group">
+                    <a id="glyp-pencil" href="#" ng-show="!editing" ng-click="editTitle()"><span class="glyphicon glyphicon-pencil"></span></a><a id="glyp-ok" href="#" ng-show="editing" ng-click="editTitle()"><span class="glyphicon glyphicon-ok"></span></a>
+                </section>
+            </section>
+            <section id="item-blocks">
+                <ul class="list-unstyled">
+                    <li ng-repeat="b in json.blocks">
+                        <p ng-show="!editing" ng-click="editTitle()">{{ b.type }}</p>
+                        <input type="text" ng-show="editing" ng-model="b.type">
+                        <ul class="list-inline">
+                            <li ng-repeat="i in b.items">
+                                <img class="icon" ng-src="http://ddragon.leagueoflegends.com/cdn/5.16.1/img/item/{{ i.id }}.png">
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+            </section>
+        </section>
+    </section>
+    <section class="page" id="page4">
+        <section class="container">
+            <section>
+                <h4>DOWNLOAD or CREATE a file named as you prefer -BUT with .json as extension- go to your game's folder and put this file in the following location: League of legends folder ..\Config\Champions\{{ champName }}\Recommended</h4>
+                <pre class="pre-scrollable">{{ json | json }}</pre>
+                <a href="#" ng-click="saveTextAsFile()">Download</a>
+            </section>
+            <section class="footer">
+                <p>BuildyourBuild isn't endorsed by Riot Games and doesn't reflect the views or opinions of Riot Games or anyone officially involved in producing or managing League of Legends. League of Legends and Riot Games are trademarks or registered trademarks of Riot Games, Inc. League of Legends © Riot Games, Inc.</p>
+            </section>
+        </section>
+    </section>
+</fullpage>
+<script src="scripts/angular.min.js"></script>
+<script src="scripts/br-fullpage.min.js"></script>
+<script src="scripts/app.js"></script>
+<script src="scripts/svc.js"></script>
+</body>
+</html>

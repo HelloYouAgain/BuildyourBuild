@@ -1,0 +1,248 @@
+body{
+    font-family: 'Open Sans Condensed', sans-serif;
+}
+.page{
+    padding-top: 70px;
+    background-color: #fdfdef;
+}
+.page:nth-child(2n){
+    background-color: #ffffff;
+}
+.br-fullpage-wrapper{
+    display:none;
+    overflow:hidden;
+    position:relative
+}
+.br-fullpage{
+    position:relative;
+    width:100%;
+    -webkit-transition:margin 1s cubic-bezier(0.25,.1,.25,1);
+    transition:margin 1s cubic-bezier(0.25,.1,.25,1);
+    z-index:1;
+    overflow:hidden
+}
+.br-fullpage-nav{
+    position:fixed;
+    right:10px;
+    list-style-type:none;
+    top:50%;
+    display:inline-block;
+    z-index:2
+}
+.br-fullpage-nav li{
+    margin:5px
+}
+.br-fullpage-nav li .br-fullpage-nav-item{ /* Circulitos dcha */
+    display:inline-block;
+    width:7px;
+    height:7px;
+    border:thin solid #ccc;
+    box-sizing:border-box;
+    border-radius:7px
+}
+.br-fullpage-nav li .br-fullpage-nav-item.active{ /* Circulito activo dcha */
+    background-color:#ccc
+}
+#nav-bar{
+    background-color: rgba(18, 17, 14, 0.83);
+    border-bottom-color: black;
+}
+#brand{
+    color: beige;
+    font-weight: bold;
+    font-family: 'Pacifico', cursive;
+}
+#nav-bar li{
+    padding-left: 15px;
+    padding-right: 15px;
+}
+#nav-bar li a{
+    color: beige;
+    font-weight: bold;
+}
+#nav-bar li:hover{
+    background-color: #5e6b80;
+}
+#page1 h1,#page1 h2{
+    color: beige;
+    font-weight: bold;
+}
+.container{
+    z-index: 999;
+    position: fixed;
+}
+
+#page1{
+    display: block;
+    background-image:url(images/Purple_Shop3.png);
+    background-color: rgba(0, 0, 0, 0.57);
+    background-size: cover;
+}
+#page1 h1{
+    font-size: 60px;
+}
+#page1 h2{
+    font-size: 35px;
+}
+#page1>section{
+    text-align: center;
+    width: inherit;
+    top: 0;
+    height: 100%;
+    position: absolute;
+}
+#page1>section>section{
+    color: beige;
+    padding: 50px;
+    margin-top: 15%;
+}
+#page2>section{
+    text-align: center;
+    width: inherit;
+    top: 0;
+    height: 100%;
+    position: absolute;
+}
+#page2>section>section{
+    padding: 50px;
+    margin-top: 5%;
+}
+#page2>section>section>section{
+    padding: 50px;
+}
+#page2>section>section a{
+    padding-top: 10px;
+    padding-bottom: 10px;
+    padding-left: 20px;
+    padding-right: 20px;
+    border: 2px solid black;
+    background-color:#afeb5e;
+    color: black;
+    font-weight: bold;
+}
+#page2>section>section>section>input{
+    padding: 10px;
+    width: 80%;
+    border-radius: 5px;
+    margin-bottom: 30px;
+}
+#page3>section{
+    width: inherit;
+    text-align: center;
+}
+#page3>section>section>h4{
+    margin-left: 10%;
+    width: 80%;
+}
+#button-group{
+    text-align: left;
+    width: 80%;
+    margin-left: 11%;
+}
+#button-group a{
+    padding: 2px;
+    padding-left: 5px;
+    padding-right: 5px;
+    color: black;
+    
+    border-radius: 20px;
+}
+#glyp-pencil{
+    background-color: #99efeb;
+}
+#glyp-ok{
+    background-color: #92f78a;
+}
+#item-blocks{
+    margin-top: 5px;
+    text-align: left;
+    padding: 15px;
+    margin-left: 10%;
+    width: 80%;
+    height: 400px;
+    overflow-y: scroll;
+    border-radius: 5px;
+    background-color: #e2dfcc;
+    border: 1px solid black;
+}
+#item-blocks>ul>li{
+    margin-top: 5px;
+    padding: 8px;
+    border-radius: 5px;
+    border: 1px solid #a2936a;
+    background-color: #ededd7;
+}
+#item-blocks>ul>li>p{
+    margin-bottom: 3px;
+    font-weight: 600;
+}
+#item-blocks>ul>li>input{
+    margin-bottom: 3px;
+    width: 85%;
+}
+#item-blocks>ul>li>ul{
+    margin-left: 10px;
+}
+#item-blocks img{
+    height: 35px;
+    border: 1px solid black;
+}
+.footer{
+    bottom:0;
+    position: absolute;
+    left: 0;
+    width: inherit;
+    padding-top: 5px;
+    background-color: beige;
+}
+.footer p{
+    text-align: left;
+    margin-left: 10px;
+    margin-right: 10px;
+}
+#page4>section{
+    padding-top: 80px;
+    height: inherit;
+    top: 0;
+    width: inherit;
+    position: absolute;
+}
+#page4>section>section{
+    text-align: center;
+}
+#page4 pre{
+    width: 80%;
+    height: 300px;
+    margin-left: 10%;
+    text-align: left;
+    margin-bottom: 40px;
+    background-color: #ededd7;
+    border: 1px solid black;
+}
+#page4 h4{
+    margin-left: 10%;
+    width: 80%;
+}
+#page4 a{
+    padding-top: 10px;
+    padding-bottom: 10px;
+    padding-left: 20px;
+    padding-right: 20px;
+    border: 2px solid black;
+    background-color:#afeb5e;
+    color: black;
+    font-weight: bold;
+}
+.glyphicon-heart{
+    color: bisque;
+}
+#page0 a{
+    padding-top: 10px;
+    padding-bottom: 10px;
+    padding-left: 20px;
+    padding-right: 20px;
+    border: 2px solid black;
+    background-color:#f25359;
+    color: black;
+    font-weight: bold;
+}
