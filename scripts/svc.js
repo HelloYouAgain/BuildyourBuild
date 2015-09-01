@@ -135,6 +135,7 @@ angular.module('BuildyourBuild').factory('Svc', function ($rootScope, $http) {
         blocks:[]
     };
   
+<<<<<<< HEAD
   objFactory.getData = function (url) {
       
       $.ajax({
@@ -144,6 +145,28 @@ angular.module('BuildyourBuild').factory('Svc', function ($rootScope, $http) {
           success: function(data){
               processData(data);
           }
+=======
+  objFactory.getJson = function (url) {
+      $.getJSON('http://whateverorigin.org/get?url=' + encodeURIComponent(url) + '&callback=?', function(data){
+          if(data.status.http_code == 404){
+              $rootScope.$broadcast('404-error');
+          }
+          else{
+              processData(data.contents);
+          }
+
+      }).fail(function() {
+        $.getJSON('http://anyorigin.com/dev/get?url=' + encodeURIComponent(url) + '&callback=?', function(data){
+          if(data.contents.indexOf("<title>Page Not Found - LolKing</title>") == 404){
+              $rootScope.$broadcast('404-error');
+          }
+          else{
+              processData(data.contents);
+          }
+        }).fail(function() {
+            alert('fail')
+        });
+>>>>>>> edc5d3a722a560c545d4b7174fc3359ace56d809
       });
   }
   

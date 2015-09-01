@@ -36,7 +36,11 @@
             if(validated){
                 $scope.dataloaded = false;
                 $scope.wrongurl=false;
+<<<<<<< HEAD
                 Svc.getData(url);
+=======
+                Svc.getJson(url);
+>>>>>>> edc5d3a722a560c545d4b7174fc3359ace56d809
                 $scope.validationhref="page3";
             }
             else{
