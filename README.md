@@ -1,12 +1,13 @@
 # BuildyourBuild
-BuildyouBUild is a web application to make life easier when you want to follow a guide to league of legends. You do not have to return to minimize the game and losing those precious seconds of time or sometimes several minutes to have a bad computer.
+BuildyouBUild is a web application to make life easier when you want to use a guide to league of legends. You do not have to  minimize the game and losing those precious seconds.
 
 ## Technologies:
  -Angularjs  
- -Bootstrap  
+ -Bootstrap 
+ -Ajax  
  
 ## Demo:
-This is the demo application: <a href="http://loldevelopers.github.io/BuildyourBuild/#">Demo</a>
+This is the demo application: <a href="http://buildyourbuild.esy.es/#">Demo</a>
 
 ## Disclaimer
 
