@@ -21,31 +21,18 @@ body{
   border-radius: 50px;
   border-style: solid;
   border-bottom-color: #3b5641;
-<<<<<<< HEAD
   border-top-color: #77d9d5;
   border-left-color: #f25359;
   border-right-color: #afeb5e;
     margin-left: 49%;
-=======
-  border-top-color: #67b3a9;
-  border-left-color: #df7950;
-  border-right-color: #decb3f;
-    margin-left: 47%;
->>>>>>> edc5d3a722a560c545d4b7174fc3359ace56d809
     margin-top: 20%;
   position: absolute;
   animation: rotate360 1s linear infinite;
   -webkit-animation: rotate360 1s linear infinite;
 
-<<<<<<< HEAD
   border-width: 50px;
   width: 1%;
   height: 1%;
-=======
-  border-width: 10px;
-  width: 5%;
-  height: 10%;
->>>>>>> edc5d3a722a560c545d4b7174fc3359ace56d809
 }
 
 /* Page CSS */
@@ -195,11 +182,7 @@ body{
     text-align: center;
 }
 #page3>section{
-<<<<<<< HEAD
     margin-top: 5%;
-=======
-    margin-top: 30px;
->>>>>>> edc5d3a722a560c545d4b7174fc3359ace56d809
     width: inherit;
     text-align: center;
 }
