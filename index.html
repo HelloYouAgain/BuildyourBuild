@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html ng-app="BuildyourBuild">
 <head lang="en">
     <meta charset="UTF-8">
@@ -7,8 +7,6 @@
     <link href='https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300,700' rel='stylesheet' type='text/css'>
     <link href='https://fonts.googleapis.com/css?family=Pacifico' rel='stylesheet' type='text/css'>
     <link rel="stylesheet" href="styles/bootstrap.min.css">
-    <script type="text/javascript" src="scripts/jquery-2.1.4.min.js"></script>
-    <script src="scripts/bootstrap.min.js"></script>
     <link rel="stylesheet" href="styles/style.css"/>
 </head>
 <body ng-controller="MainCtrl">
@@ -37,12 +35,13 @@
             </ul>
         </div>
 </section>
-<fullpage class="instant-size" page-class="page">
+<div class="spinner" ng-hide="pageloaded"></div>
+<fullpage ng-cloak="" ng-show="pageloaded" class="instant-size" page-class="page">
     <section class="page" id="page0">
         <section class="container">
             <h1>About</h1>
-            <h3>First, I would like to thank Lolking.net for their approval when I told them the idea I had for this contest. <span class="glyphicon glyphicon-heart"></span><br/>Where the idea comes from?<br/>The idea comes to me becouse I am that kind of person that look for a guide, set up runes and masteries and go in-game thinking - I will minimize the game when I have to buy - but I don't, I never do that, I ALWAYS forget it. So for that people like me or just for that lazy ones, i hope you like this app as much as I will.<br/><br/>How you did it?<br/>The most important things were examine carefully the HTML code of Lolking Guides and understand the Riot's Item Set Documentation. What we do is a HTTP request using the Lolking's URL and it returns a JSON-encoded data which contains the HTML code. Once we get the HTML code, we look for the HTML tags we are interested becouse they have the data we need to format the item set JSON file. Once we get the item set JSON file ready to put in the game location given and working, we focus on give the possibility of customize the item set by the user and get a simple, modern and enjoyable interface.<br/><br/>Which technologies did you use?<br/>Angularjs and bootstrap<br/><br/></h3>
-            <a href="https://github.com/lolDevelopers/BuildyourBuild">Github repository</a>
+            <h3>First, I would like to thank Lolking.net for their approval when I told them the idea I had for this contest. <span class="glyphicon glyphicon-heart"></span><br/>Where the idea comes from?<br/>The idea comes to me becouse I am that kind of person that look for a guide, set up runes and masteries and go in-game thinking - I will minimize the game when I have to buy - but I don't, I never do that, I ALWAYS forget it. So for that people like me or just for that lazy ones, i hope you like this app as much as I will.<br/><br/>How you did it?<br/>The most important things were examine carefully the HTML code of Lolking Guides and understand the Riot's Item Set Documentation. What we do is a AJAX-PHP request using the Lolking's URL and it returns a JSON-encoded data which contains the HTML code. Once we get the HTML code, we look for the HTML tags we are interested becouse they have the data we need to format the item set JSON file. Once we get the item set JSON file ready to put in the game location given and working, we focus on give the possibility of customize the item set by the user and get a simple, modern and enjoyable interface.<br/><br/>Which technologies did you use?<br/>AJAX, Angularjs and bootstrap<br/><br/></h3>
+            <a href="http://buildyourbuild.esy.es/#">Github repository</a>
         </section>
     </section>
     <section class="page" id="page1">
@@ -56,21 +55,26 @@
     </section>
     <section class="page" id="page2">
         <section class="container">
+            
             <section>
+                
                 <h1>HOW IT WORKS:</h1>
                 <h2>Get your favourite Lolking Guide and copy + paste the URL here</h2>
                 <h2>It will generate a JSON file that contains your item set. You only have to put it into the game location given</h2>
                 <h2>Check if it works going in-game, becouse it will not appear in the client</h2><br/>
-                <a href="#" ng-click="start()">UNDERSTOOD? Let's go</a>
+                <a id="letsgo" href="#" ng-click="start()">UNDERSTOOD? Let's go</a>
                 <section ng-show="started">
                     <input type=text ng-model="url" placeholder="Paste de Lolking Guide URL here"><br/>
-                    <a href="#" fullpage-href="page3" ng-click="go(url)">GIVE ME MY ITEM SET</a>
+                    <a id="validate" href="#" fullpage-href="{{validationhref}}" ng-click="validate(url)">GIVE ME MY ITEM SET</a>
                 </section>
             </section>
         </section>
+        <alert ng-show="wrongurl" class="alert" type="danger">{{ alertmsg }}</alert>
     </section>
     <section  class="page" id="page3">
-        <section class="container">
+        <div id="loadingdata" ng-hide="dataloaded"><h3>Loading data...</h3></div>
+        <div class="spinner" ng-hide="dataloaded"></div>
+        <section ng-cloak="" ng-show="dataloaded" class="container">
             <section>
                 <h4>Here you can modify the titles, this is OPTIONAL. Let you know that titles in the game will not show more than 50 characteres. </h4>
                 <section id="button-group">
@@ -91,12 +95,13 @@
                 </ul>
             </section>
         </section>
+        <alert ng-show="wrongurl" class="alert" type="danger">{{ alertmsg }}</alert>
     </section>
     <section class="page" id="page4">
         <section class="container">
             <section>
                 <h4>DOWNLOAD or CREATE a file named as you prefer -BUT with .json as extension- go to your game's folder and put this file in the following location: League of legends folder ..\Config\Champions\{{ champName }}\Recommended</h4>
-                <pre class="pre-scrollable">{{ json | json }}</pre>
+                <pre id="code" class="pre-scrollable">{{ json | json }}</pre>
                 <a href="#" ng-click="saveTextAsFile()">Download</a>
             </section>
             <section class="footer">
@@ -105,7 +110,10 @@
         </section>
     </section>
 </fullpage>
+<script type="text/javascript" src="scripts/jquery-2.1.4.min.js"></script>
+<script src="scripts/bootstrap.min.js"></script>
 <script src="scripts/angular.min.js"></script>
+<script src="scripts/ui-bootstrap.min.js"></script>
 <script src="scripts/br-fullpage.min.js"></script>
 <script src="scripts/app.js"></script>
 <script src="scripts/svc.js"></script>

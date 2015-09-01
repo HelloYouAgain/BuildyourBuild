@@ -1,3 +1,42 @@
+/* Spinner */
+[ng\:cloak], [ng-cloak], [data-ng-cloak], [x-ng-cloak], .ng-cloak, .x-ng-cloak {
+    display: none !important;
+}
+
+@keyframes rotate360 {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+@-webkit-keyframes rotate360 {
+  from { -webkit-transform: rotate(0deg); }
+  to { -webkit-transform: rotate(360deg); }
+}
+
+body{
+    background-color: black;
+}
+.spinner {
+  display:inline-block;
+  border-radius: 50px;
+  border-style: solid;
+  border-bottom-color: #3b5641;
+  border-top-color: #77d9d5;
+  border-left-color: #f25359;
+  border-right-color: #afeb5e;
+    margin-left: 49%;
+    margin-top: 20%;
+  position: absolute;
+  animation: rotate360 1s linear infinite;
+  -webkit-animation: rotate360 1s linear infinite;
+
+  border-width: 50px;
+  width: 1%;
+  height: 1%;
+}
+
+/* Page CSS */
+
 body{
     font-family: 'Open Sans Condensed', sans-serif;
 }
@@ -44,7 +83,7 @@ body{
     background-color:#ccc
 }
 #nav-bar{
-    background-color: rgba(18, 17, 14, 0.83);
+    background-color: rgba(18, 17, 14, 0.79);
     border-bottom-color: black;
 }
 #brand{
@@ -96,6 +135,9 @@ body{
     padding: 50px;
     margin-top: 15%;
 }
+.alert{
+    margin-top: -20px;
+}
 #page2>section{
     text-align: center;
     width: inherit;
@@ -116,17 +158,31 @@ body{
     padding-left: 20px;
     padding-right: 20px;
     border: 2px solid black;
-    background-color:#afeb5e;
     color: black;
     font-weight: bold;
 }
+
+#validate{
+    background-color:#77d9d5;
+}
+#letsgo{
+    background-color:#afeb5e;
+}
 #page2>section>section>section>input{
+    text-align: center;
+    font-size: 22px;
     padding: 10px;
-    width: 80%;
+    width: 60%;
     border-radius: 5px;
     margin-bottom: 30px;
 }
+#loadingdata{
+    margin-left: 45%;
+    width: 10%;
+    text-align: center;
+}
 #page3>section{
+    margin-top: 5%;
     width: inherit;
     text-align: center;
 }
@@ -208,9 +264,10 @@ body{
     position: absolute;
 }
 #page4>section>section{
+    margin-top: 5%;
     text-align: center;
 }
-#page4 pre{
+#code{
     width: 80%;
     height: 300px;
     margin-left: 10%;
@@ -234,7 +291,7 @@ body{
     font-weight: bold;
 }
 .glyphicon-heart{
-    color: bisque;
+    color: #ff9ead;
 }
 #page0 a{
     padding-top: 10px;
@@ -245,4 +302,30 @@ body{
     background-color:#f25359;
     color: black;
     font-weight: bold;
+}
+
+@media all and (min-width: 1600px) and (min-height: 1000px) {
+    #page1 h1{
+        font-size: 80px;
+    }
+    #page1 h2{
+        font-size: 50px;
+    }
+    #page2>section>section{
+        margin-top: 15%;
+    }
+    #page3>section{
+        margin-top: 5%;
+    }
+    #item-blocks{
+        height: 750px;
+    }
+    #page4>section>section{
+        margin-top:5%;
+    }
+    #page0>section{
+        margin-top:10%;
+        margin-left:5%;
+    }
+    
 }

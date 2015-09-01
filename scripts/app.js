@@ -1,23 +1,54 @@
 
-    angular.module('BuildyourBuild', ['br.fullpage']);
+    angular.module('BuildyourBuild', ['br.fullpage','ui.bootstrap']);
 
-    angular.module('BuildyourBuild').controller('MainCtrl', function ($scope, Svc){
+    angular.module('BuildyourBuild').controller('MainCtrl', function ($scope, $timeout, Svc){
         
+        $scope.pageloaded = false;
+        $timeout(function() { $scope.pageloaded = true; }, 500);
         
+        $scope.json = {};
         $scope.started = false;
+        $scope.editing = false;
+        $scope.wrongurl= false;
+        $scope.alertmsg="";
+        $scope.dataloaded = true;
+        
         $scope.start = function(){
             $scope.started = true;
         }
         
-        $scope.editing = false;
         $scope.editTitle = function(){
             $scope.editing = !$scope.editing;
         }
         
-        $scope.go = function(url){
-            Svc.getJson(url);
+        $scope.validate = function(url){
+            var validated=false;
+            if( url && url.indexOf("www.lolking.net/guides/")>-1){
+                if((url.indexOf("http://")>-1 && url.substring(0, 30) == "http://www.lolking.net/guides/") 
+                || (url.indexOf("https://")>-1 && url.substring(0, 31) == "https://www.lolking.net/guides/")){
+                    validated=true;
+                }
+                else if(url.substring(0, 23) == "www.lolking.net/guides/"){
+                    url="http://"+url;
+                    validated=true;
+                }
+            }
+            if(validated){
+                $scope.dataloaded = false;
+                $scope.wrongurl=false;
+                Svc.getData(url);
+                $scope.validationhref="page3";
+            }
+            else{
+                $scope.wrongurl=true;
+                $scope.alertmsg="URL not valid (URL example: www.lolking.net/guides/355215)"; 
+                $scope.validationhref="";
+            }
         }
         
+        /*
+            --- File download ---
+        */        
         $scope.saveTextAsFile = function(){
             var str = JSON.stringify($scope.json)
             var filename = $scope.json.title.replace(/'/g, "");
@@ -52,12 +83,18 @@
             document.body.removeChild(event.target);
         }
         
-        //Modificar json?
-        $scope.json = {};
+        /*
+            --- Events ---
+        */
+        $scope.$on('404-error', function(){
+            $scope.wrongurl=true;
+            $scope.alertmsg="Page not found - URL not valid (URL example: www.lolking.net/guides/355215)"; 
+            $scope.dataloaded = true;
+        });
         
-          $scope.$on('json-finished', function(){
-            $scope.$apply(function(){$scope.json=Svc.finalResult; $scope.champName=Svc.result.champion;});
-          });
+        $scope.$on('json-finished', function(){
+            $scope.$apply(function(){$scope.json=Svc.finalResult; $scope.champName=Svc.result.champion; $scope.dataloaded = true;});
+        });
     });
 
     
