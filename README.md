@@ -7,7 +7,12 @@ BuildyourBuild is a web application to make life easier when you want to use a g
  -Ajax  
  
 ## Demo:
-This is the demo application: <a href="http://buildyourbuild.esy.es/#">Demo</a>
+~~This is the demo application: link~~
+Demo does not work anymore due to multiple changes on lolking.net
+Anyways I'll keep it to myself as visual inspiration being my first web
+
+## Instructions
+Download + execute index.html
 
 ## Disclaimer
 
