@@ -8,11 +8,15 @@ BuildyourBuild is a web application to make life easier when you want to use a g
  
 ## Demo:
 ~~This is the demo application: link~~
-Demo does not work anymore due to multiple changes on lolking.net
-Anyways I'll keep it to myself as visual inspiration being my first web
+
+Demo does not work anymore due to multiple changes on lolking.net .
+Anyways I'll keep it to myself as visual inspiration being my first web.
 
 ## Instructions
 Download + execute index.html
+
+# Images
+![Main page](https://image.ibb.co/mORUgn/Buildyourbuild.png "Main page")
 
 ## Disclaimer
 
